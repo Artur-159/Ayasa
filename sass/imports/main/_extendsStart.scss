@@ -1,0 +1,412 @@
+%standardList {
+	@include standardList();
+}
+
+%standardRowList {
+	@include standardRowList();
+}
+
+%coverLayer {
+	@include coverLayer();
+}
+
+%fixedCover {
+	@include fixCoverLayer;
+}
+
+%verticalRotate {
+	@include transStyle(scaleX(-1));
+}
+
+%horizontalRotate {
+	@include transStyle(scaleY(-1));
+}
+
+%centeredImage {
+	>img {
+		@extend %coverLayer;
+		object-fit: cover;
+	}
+}
+
+%coverVideo {
+	iframe {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100% !important;
+		height: 100% !important;
+	}
+}
+
+%square {
+	@include overHidden();
+	@extend %centeredImage;
+	@extend %coverVideo;
+
+	&:before {
+		display: block;
+		content: "";
+		padding-bottom: 100%;
+	}
+}
+
+%almostSquare {
+	@include overHidden();
+	@extend %centeredImage;
+	@extend %coverVideo;
+
+	&:before {
+		display: block;
+		content: "";
+		padding-bottom: 75%;
+	}
+}
+
+%lessWide {
+	@include overHidden();
+	@extend %centeredImage;
+	@extend %coverVideo;
+
+	&:before {
+		display: block;
+		content: "";
+		padding-bottom: 62.5%;
+	}
+}
+
+%standardWide {
+	@include overHidden();
+	@extend %centeredImage;
+	@extend %coverVideo;
+
+	&:before {
+		display: block;
+		content: "";
+		padding-bottom: 56.25%;
+	}
+}
+
+%halfWide {
+	@include overHidden();
+	@extend %centeredImage;
+	@extend %coverVideo;
+
+	&:before {
+		display: block;
+		content: "";
+		padding-bottom: 50%;
+	}
+}
+
+%superWide {
+	@include overHidden();
+	@extend %centeredImage;
+	@extend %coverVideo;
+
+	&:before {
+		display: block;
+		content: "";
+		padding-bottom: 25%;
+	}
+}
+
+%standardNarrow {
+	@include overHidden();
+	@extend %centeredImage;
+
+	&:before {
+		display: block;
+		content: "";
+		padding-bottom: 177.78%;
+	}
+}
+
+%lessNarrow {
+	@include overHidden();
+	@extend %centeredImage;
+
+	&:before {
+		display: block;
+		content: "";
+		padding-bottom: 133.33%;
+	}
+}
+
+%iconElement {
+
+	&:before,
+	&:after {
+		font-family: 'icon' !important;
+		font-style: normal;
+		font-weight: normal;
+		font-variant: normal;
+		text-transform: none;
+		line-height: 1;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+}
+
+%noBlink {
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	transform-style: preserve-3d;
+	-webkit-transform-style: preserve-3d;
+}
+
+%centerBlock {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+%centerInlineBlock {
+	display: inline-flex;
+	vertical-align: top;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+%linkTypeBtn {
+	border: none;
+	padding: 0;
+	background: transparent;
+}
+
+%largeText {
+	font-size: 180%;
+	line-height: 28px;
+
+	@include mediaTo($size768) {
+		font-size: 160%;
+	}
+}
+
+%middleText {
+	font-size: 160%;
+	line-height: 26px;
+}
+
+%sectionTitle {
+	font-size: 200%;
+	line-height: 32px;
+}
+
+%pageTitle {
+	line-height: 54px;
+	font-family: $medium;
+
+	@include mediaFrom($size1600) {
+		font-size: 450%;
+	}
+
+	@include mediaRange($size960, $size1600) {
+		font-size: 300%;
+		line-height: 40px;
+	}
+
+	@include mediaRange($size768, $size960) {
+		font-size: 240%;
+		line-height: 32px;
+	}
+
+	@include mediaTo($size768) {
+		font-size: 200%;
+		line-height: 32px;
+	}
+}
+
+
+%largeTitle {
+	line-height: 84px;
+
+	@include mediaFrom($size1600) {
+		font-size: 700%;
+	}
+
+	@include mediaRange($size1200, $size1600) {
+		font-size: 500%;
+		line-height: 60px;
+	}
+
+	@include mediaRange($size960, $size1200) {
+		font-size: 400%;
+		line-height: 50px;
+	}
+
+	@include mediaRange($size768, $size960) {
+		font-size: 350%;
+		line-height: 40px;
+	}
+
+	@include mediaTo($size768) {
+		font-size: 300%;
+		line-height: 36px;
+	}
+}
+
+%titleBlock {
+	line-height: 38px;
+
+	@include mediaFrom($size768) {
+		font-size: 240%;
+	}
+
+	@include mediaTo($size768) {
+		font-size: 200%;
+		line-height: 32px;
+	}
+}
+
+%smallTitle {
+	line-height: 38px;
+
+	@include mediaFrom($size1600) {
+		font-size: 240%;
+	}
+
+	@include mediaRange($size1280, $size1600) {
+		font-size: 200%;
+	}
+
+	@include mediaRange($size768, $size1280) {
+		font-size: 160%;
+	}
+
+	@include mediaTo($size768) {
+		font-size: 140%;
+		line-height: 22px;
+	}
+}
+
+%middleTtile {
+	line-height: 39px;
+
+	@include mediaFrom($size1600) {
+		font-size: 300%;
+	}
+
+	@include mediaRange($size960, $size1600) {
+		font-size: 240%;
+	}
+
+	@include mediaRange($size768, $size960) {
+		font-size: 200%;
+	}
+
+	@include mediaTo($size768) {
+		font-size: 180%;
+		line-height: 28px;
+	}
+}
+
+
+%paddingTop {
+	@include mediaFrom($size1440) {
+		padding-top: 80px;
+	}
+
+	@include mediaRange($size1200, $size1440) {
+		padding-top: 60px;
+	}
+
+	@include mediaTo($size1200) {
+		padding-top: 40px;
+	}
+
+	@include mediaTo($size576) {
+		padding-top: 20px;
+	}
+}
+
+
+%blockPadding {
+	@include mediaFrom($size1440) {
+		margin-bottom: 50px;
+	}
+
+	@include mediaRange($size1200, $size1440) {
+		margin-bottom: 30px;
+	}
+
+	@include mediaRange($size960, $size1200) {
+		margin-bottom: 30px;
+	}
+
+	@include mediaTo($size960) {
+		margin-bottom: 20px;
+	}
+}
+
+%marginSpace {
+	@include mediaFrom($size1440) {
+		margin-bottom: 30px;
+	}
+
+}
+
+%standardText {
+	font-size: 140%;
+	line-height: 20px;
+}
+
+%smallText {
+	font-size: 120%;
+	line-height: 15px;
+}
+
+%standardBtn {
+	border: none;
+	height: 54px;
+	padding: 5px 30px;
+	display: inline-flex;
+	vertical-align: top;
+	align-items: center;
+	justify-content: center;
+	font-family: $medium;
+	@extend %middleText;
+	@extend %centerInlineBlock;
+}
+
+%primaryBtn {
+	@extend %standardBtn;
+	outline: none;
+	color: $black2D;
+	background: $orange2A;
+	border-radius: 50px;
+	@include loading;
+	@include animStyle(all 0.3s);
+
+	&:hover {
+		@media(hover:hover) {
+			background: $buttonHoverColor;
+		}
+	}
+}
+
+%secondaryBtn {
+	@extend %standardBtn;
+	background: transparent;
+	padding: 12px 30px;
+	outline: 1px solid $siteColor !important;
+	border-radius: 20px;
+	color: $siteColor;
+	@include loading;
+	@include animStyle(all 0.3s);
+	&:before {
+		color: $black;
+		@include animStyle(0.3s);
+	}
+	&:hover {
+		@media(hover:hover) {
+			background: $siteColor;
+			color: $white;
+			&:before {
+				color: $white;
+			}
+		}
+	}
+}

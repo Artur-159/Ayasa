@@ -1,0 +1,585 @@
+html {
+    height: 100%;
+    font-size: 10px;
+    line-height: 1.4286em;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -ms-overflow-style: scrollbar;
+    -webkit-overflow-scrolling: touch;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-size: 100%;
+    color: $textColor;
+    background: $bodyColor;
+    width: 100%;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    min-height: 100%;
+    font-family: $regular;
+
+    &.popup_opened {
+        overflow: hidden;
+    }
+
+    @include mediaTo($size768) {
+        background: $white;
+    }
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+input,
+select,
+textarea,
+button,
+a,
+.slick-slide {
+    outline: none !important;
+}
+
+a,
+a:focus,
+a:hover,
+button:hover {
+    text-decoration: none;
+}
+
+a {
+    color: $siteColor;
+
+    &:not([href]) {
+        pointer-events: none;
+    }
+}
+
+button {
+    cursor: pointer;
+    display: block;
+}
+
+img {
+    max-height: none;
+    border: none;
+}
+
+input {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+input,
+textarea,
+button {
+    font-family: inherit;
+    font-size: 100%;
+}
+
+.page_row {
+    display: flex;
+    flex-wrap: wrap;
+    @include rowMargin;
+
+    .cb {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+.page_container {
+    @include containerPadding;
+    width: 100%;
+    margin: 0 auto;
+    @include containerPadding;
+
+    @include mediaFrom($size1600) {
+        max-width: $container1920 + 2*$containerPadding;
+    }
+
+    @include mediaRange($size1440, $size1600) {
+        max-width: $container1600 + 2*$containerPadding;
+    }
+
+    @include mediaRange($size1280, $size1440) {
+        max-width: $container1440 + 2*$containerPadding;
+    }
+
+    @include mediaRange($size960, $size1280) {
+        max-width: $container1280 + 2*$containerPadding;
+    }
+}
+
+.individual_hint {
+    display: none;
+}
+
+.individual_hint {
+    color: $error;
+}
+
+.error_hint {
+    display: block;
+    max-height: 0;
+    @extend %all300;
+    overflow: hidden;
+    color: $error;
+}
+
+.help-block.form-error {
+    display: none !important;
+}
+
+.has-error {
+
+    .error_hint,
+    ~.error_hint {
+        max-height: 60px;
+    }
+}
+
+.field_block {
+    position: relative;
+
+    input,
+    textarea {
+        width: 100%;
+
+    }
+
+    textarea {
+        resize: none;
+        display: block;
+    }
+}
+
+.cb {
+    display: block;
+    clear: both;
+}
+
+.popup_block {
+    @include popupBlock($black, 70%);
+    @include popupTop(0.3s);
+
+    .popup_inner {
+        @include popupInner($containerPadding);
+    }
+
+    .popup_container {
+        @include popupContainer($white, 976px, 0);
+        border-radius: 20px;
+
+        // @include mediaTo($size960) {
+        //     padding: $containerPadding;
+        // }
+
+    }
+
+    .popup_close.icon_close {
+        border: 1px solid $white;
+        background: none;
+        display: block;
+        position: absolute;
+        right: 30px;
+        top: 30px;
+        z-index: 1;
+        width: 40px;
+        height: 40px;
+        color: $white;
+        background: transparent;
+        border-radius: 50%;
+        @include animStyle(all 0.3s);
+
+        &:hover {
+            @media(hover:hover) {
+                background: $orange2A;
+                border: 1px solid $orange2A;
+
+                &:before {
+                    color: $black;
+                }
+            }
+        }
+
+        &:before {
+            font-size: 2.7rem;
+            @extend %centerBlock;
+
+        }
+
+
+        @include mediaTo($size960) {
+            right: 10px;
+            top: 10px;
+            width: 30px;
+            height: 30px;
+
+            &:before {
+                font-size: 1.7rem;
+            }
+        }
+    }
+
+    &.get_popup {
+        .popup_content {
+            &:not(.active) {
+                display: none;
+            }
+        }
+
+        .item_head {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: $siteColor;
+            padding: 20px 0;
+            border-radius: 20px 20px 0 0;
+
+            @include mediaTo($size576) {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .logo_block {
+                img {
+                    height: auto;
+
+                    @include mediaTo($size768) {
+                        max-width: 128px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.get_popup {
+    .popup_content {
+        max-width: 1040px;
+        margin: 0 auto;
+
+        // &:not(.active) {
+        //     display: none;
+        // }
+
+        ul li {
+            font-size: 1.6rem
+        }
+    }
+
+    .form_section {
+        max-width: 876px;
+        margin: 0 50px;
+
+        @include mediaTo($size576) {
+            margin: 0 20px;
+        }
+    }
+
+    .popup_text {
+        color: $white;
+        @extend %titleBlock;
+        margin-top: 6px;
+        font-family: $semiBold;
+    }
+
+    .info_popup {
+        margin-top: 50px;
+        color: $black;
+        @extend %largeText;
+        text-align: center;
+
+        @include mediaRange($size576, $size768) {
+            margin-top: 35px;
+        }
+
+        @include mediaTo($size576) {
+            margin-top: 20px;
+        }
+    }
+
+    ul {
+        padding: 0;
+        margin: 0 20px 0;
+        list-style-type: disc;
+    }
+
+    .description_sub {
+        margin-bottom: 10px;
+    }
+
+    &.servicesPage_popup .form_title {
+        margin-top: 0;
+        padding-top: 0;
+        border-top: 0;
+    }
+
+    .button_block {
+        flex: 0 0 100%;
+        max-width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.success_popup,
+.error_popup {
+    .poup_container {
+        max-width: 540px;
+        background: $white;
+        width: 100%;
+        border-radius: 20px;
+    }
+
+    .item_head {
+        display: flex;
+        justify-content: center;
+        background: $siteColor;
+        padding: 20px 0;
+        border-radius: 20px 20px 0 0;
+
+        @include mediaTo($size576) {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+    }
+
+    .popup_info {
+        padding: 30px 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .primary_btn {
+        margin: 40px auto 0;
+    }
+
+    .popup_description {
+        @extend %middleText;
+    }
+
+
+}
+
+.success_popup {
+    .popup_text {
+        @extend %titleBlock;
+        display: flex;
+        align-items: center;
+        color: $success;
+
+        &:before {
+            color: $success;
+            margin-right: 10px;
+        }
+    }
+}
+
+.error_popup {
+    .popup_text {
+        @extend %titleBlock;
+        display: flex;
+        align-items: center;
+        color: $error;
+
+        &:before {
+            color: $error;
+            margin-right: 10px;
+        }
+    }
+}
+
+.field_row {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin: 20px 0 50px;
+
+    @include mediaTo($size768) {
+        margin-bottom: 40px;
+    }
+
+    .field_block {
+        margin-bottom: 42px;
+        @include standardCol(6);
+
+        &:has(textarea) {
+            +.field_block {
+                margin-top: -90px;
+            }
+        }
+
+        &:hover {
+
+            input {
+                border-bottom: 1px solid $siteColor;
+            }
+        }
+
+        @include mediaTo($size768) {
+            @include standardCol(12);
+            margin-bottom: 30px;
+
+            &:has(textarea) {
+                +.field_block {
+                    margin-top: 0;
+                }
+            }
+        }
+
+        &.full_field {
+            @include standardCol(12);
+        }
+
+        &:has(.error) {
+            input {
+                border-color: $error;
+            }
+        }
+    }
+
+    @include mediaTo($size768) {
+        .textarea_block {
+            order: 2;
+        }
+
+        .email_block {
+            order: 1;
+        }
+
+        .button_block {
+            order: 3;
+        }
+    }
+
+    input,
+    textarea {
+        background: transparent;
+        color: $textColor;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: 1px solid $blackOpacity;
+        padding: 10px 10px 10px 0;
+        outline: none !important;
+        @extend %middleText;
+        @include animStyle(all 0.3s);
+
+        &::placeholder {
+            color: $textColor;
+            font-size: 1.6rem;
+
+            @include mediaTo($size960) {
+                font-size: 1.4rem;
+            }
+        }
+    }
+
+    textarea {
+        border: 1px solid $blackOpacity;
+        border-radius: 20px;
+        padding: 10px;
+
+        &:focus {
+            border: 1px solid $siteColor
+        }
+    }
+
+
+    .field_name {
+        @extend %standardText;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    .error_hint {
+        font-size: 1.4rem;
+        line-height: 1.5em;
+        position: absolute;
+        left: $containerPadding;
+        bottom: -20px;
+    }
+
+    .error .error_hint,
+    .error~.error_hint {
+        max-height: 60px;
+    }
+}
+
+.section_title {
+    @extend %sectionTitle;
+    margin: 0;
+}
+
+.primary_btn {
+    @extend %primaryBtn;
+
+}
+
+.secondary_btn {
+    @extend %secondaryBtn;
+}
+
+
+
+.page_title {
+    @extend %pageTitle;
+}
+
+.standard_text {
+    @extend %standardText;
+}
+
+.hidden_label {
+    display: none;
+}
+
+@keyframes loadAnimation {
+    9% {
+        box-shadow: none;
+    }
+
+    10% {
+        box-shadow: -8px 0 0;
+    }
+
+    35% {
+        box-shadow: -8px 0 0;
+    }
+
+    35.1% {
+        box-shadow: -8px 0 0, 8px 0 0;
+    }
+
+    60% {
+        box-shadow: -8px 0 0, 8px 0 0;
+    }
+
+    60.1% {
+        box-shadow: -8px 0 0, 8px 0 0, 24px 0 0;
+    }
+
+    85% {
+        box-shadow: -8px 0 0, 8px 0 0, 24px 0 0;
+    }
+
+    85.1% {
+        box-shadow: none
+    }
+
+    100% {
+        box-shadow: none
+    }
+}

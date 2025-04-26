@@ -1,0 +1,345 @@
+%opacity300 {
+    @include animStyle(opacity 0.3s);
+}
+
+%color300 {
+    @include animStyle(color 0.3s);
+}
+
+%back300 {
+    @include animStyle(background-color 0.3s);
+}
+
+%all300 {
+    @include animStyle(all 0.3s);
+}
+
+%opacity150 {
+    @include animStyle(opacity 0.15s);
+}
+
+%color150 {
+    @include animStyle(color 0.15s);
+}
+
+%back150 {
+    @include animStyle(background-color 0.15s);
+}
+
+%all150 {
+    @include animStyle(all 0.15s);
+}
+
+
+%textUnSelect {
+	-webkit-touch-callout: none; 
+    -webkit-user-select: none;
+     -khtml-user-select: none; 
+       -moz-user-select: none; 
+        -ms-user-select: none; 
+            user-select: none;
+}
+
+%maskedInput {
+    @include maskedInput();
+}
+
+%socColorHover {
+    a {
+        @extend %color300;
+    }
+    .icon_youtube:active {
+        color: $youtubeColor;    
+    }
+    .icon_behance:active {
+        color: $behanceColor;    
+    }
+    .icon_facebook:active {
+        color: $facebookColor;    
+    }
+    .icon_instagram:active {
+        background: $instagramColor;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .icon_linkedin:active {
+        color: $linkedinColor;    
+    }
+    .icon_ok:active {
+        color: $okColor;    
+    }
+    .icon_pinterest:active {
+        color: $pinterestColor;    
+    }
+    .icon_twitter:active {
+        color: $twitterColor;    
+    }
+    .icon_vk:active {
+        color: $vkColor;    
+    }
+    .icon_tiktok:active {
+        color: $tiktokColor;    
+    }
+    .icon_telegram:active {
+        color: $telegramColor;    
+    }
+}
+
+%siteColorHover {
+    @extend %color300;
+    &:active {
+        color: $siteColor;
+    }
+}
+%siteBgHover {
+    @extend %back300;
+    &:active {
+        background: $siteColor;
+    }
+}
+%siteColorAlfaHover {
+    @extend %color300;
+    &:active {
+        color: rgba($siteColor,0.7);
+    }
+}
+%siteBgAlfaHover {
+    @extend %back300;
+    &:active {
+        background: rgba($siteColor,0.7);
+    }
+}
+%darkReverseHover {
+    @extend %all300;
+    &:active {
+        background: $black;
+        color: $white;
+        border-color: transparent;
+    }
+}
+%lightReverseHover {
+    @extend %all300;
+    &:active {
+        background: $white;
+        color: $black;
+        border-color: transparent;
+    }
+}
+%opacityHover {
+    @extend %opacity300;
+    &:active {
+        opacity: 0.7;
+    }
+}
+
+
+%siteDarkRHover {
+    @extend %all300;
+    &:active {
+        background: $siteColor;
+        color: $textColor;
+        border-color: transparent;
+    }
+}
+
+%siteLightRHover {
+    @extend %all300;
+    &:active {
+        background: $siteColor;
+        color: $white;
+        border-color: transparent;
+    }
+}
+
+%darkHover {
+    @extend %color300;
+    &:active {
+        color: $black;
+    }
+}
+
+%lightHover {
+    @extend %color300;
+    &:active {
+        color: $white;
+    }
+}
+
+%standardHover {
+    @extend %color300;
+    &:active {
+        color: $secondColor;
+    }
+}
+
+%standardBgHover {
+    @extend %all300;
+    &:active {
+        background: $secondColor;
+        color: $textColor;
+        border-color: transparent;
+    }
+}
+
+%scaleHover {
+    img {
+        @include animStyle(transform 0.3s);
+    }
+    &:active img {
+        @include transStyle(scale(1.1));
+    }
+}
+
+%removeHover {
+    @extend %color300;
+    &:active {
+        color: $error;
+    }
+}
+
+@media (hover: hover) {
+    %socColorHover {
+        .icon_youtube:hover {
+            color: $youtubeColor;    
+        }
+        .icon_behance:hover {
+            color: $behanceColor;    
+        }
+        .icon_facebook:hover {
+            color: $facebookColor;    
+        }
+        .icon_instagram:hover {
+            background: $instagramColor;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .icon_linkedin:hover {
+            color: $linkedinColor;    
+        }
+        .icon_ok:hover {
+            color: $okColor;    
+        }
+        .icon_pinterest:hover {
+            color: $pinterestColor;    
+        }
+        .icon_twitter:hover {
+            color: $twitterColor;    
+        }
+        .icon_vk:hover {
+            color: $vkColor;    
+        }
+        .icon_tiktok:hover {
+            color: $tiktokColor;    
+        }
+        .icon_telegram:hover {
+            color: $telegramColor;    
+        }
+    }
+    
+    %siteColorHover {
+        &:hover {
+            color: $siteColor;
+        }
+    }
+    %siteBgHover {
+        &:hover {
+            background: $siteColor;
+        }
+    }
+    %siteColorAlfaHover {
+        &:hover {
+            color: rgba($siteColor,0.7);
+        }
+    }
+    %siteBgAlfaHover {
+        &:hover {
+            background: rgba($siteColor,0.7);
+        }
+    }
+    %darkReverseHover {
+        &:hover {
+            background: $black;
+            color: $white;
+            border-color: transparent;
+        }
+    }
+    %lightReverseHover {
+        &:hover {
+            background: $white;
+            color: $black;
+            border-color: transparent;
+        }
+    }
+    %opacityHover {
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+
+
+    %siteDarkRHover {
+        &:hover {
+            background: $siteColor;
+            color: $textColor;
+            border-color: transparent;
+        }
+    }
+    
+    %siteLightRHover {
+        &:hover {
+            background: $siteColor;
+            color: $white;
+            border-color: transparent;
+        }
+    }
+
+    %darkHover {
+        &:hover {
+            color: $black;
+        }
+    }
+
+    %lightHover {
+        &:hover {
+            color: $white;
+        }
+    }
+
+    %standardHover {
+        &:hover {
+            color: $secondColor;
+        }
+    }
+
+    %standardBgHover {
+        &:hover {
+            background: $secondColor;
+            color: $textColor;
+            border-color: transparent;
+        }
+    }
+
+    %scaleHover {
+        &:hover img {
+            @include transStyle(scale(1.1));
+        }
+    }
+
+    %removeHover {
+        &:hover {
+            color: $error;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+

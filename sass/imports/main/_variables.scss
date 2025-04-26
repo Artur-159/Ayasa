@@ -1,0 +1,89 @@
+//font families
+$regular: "inter-regular";
+$semiBold: "inter-SemiBold";
+$medium: "inter-Medium";
+
+//media query sizes
+$size400: 401px;
+$size480: 481px;
+$size576: 576px;
+$size600: 601px;
+$size640: 641px;
+$size720: 721px;
+$size768: 769px;
+$size960: 1025px;
+$size1200: 1201px;
+$size1280: 1281px;
+$size1366: 1366px;
+$size1440: 1441px;
+$size1600: 1601px;
+
+//colors
+$black: #000000;
+$blackOpacity: rgb(#000000, 20%);
+$black33: #333333; 
+$black2D:#041B2D;
+$gray66: #666666;
+$gray99: #999999;
+$gray9D:#92969D;
+$grayE5: #e5e5e5;
+$grayEC:#DDE0EC;
+$gray19:rgba(#040C19,20%);
+$gray04:#040C19;
+$bodyColor:#EDF0F5;
+$descGray:#DFDFDF;
+$white: #ffffff;
+$whiteOpacity:rgb($white, 10%);
+$creamyF2:#f2f2f2;
+$error: #FF3030;
+$siteColor: #069dd5;
+$secondColor: $black;
+$textColor: #323943;
+$backgroundColor:#F4F7FA;
+$buttonHoverColor:#FFC635;
+$siteColor:#0B1E3D;
+$success:#00E300;
+$info: #388BC7;
+$warning: #FFD99F;
+$devColor: #069dd5;
+$orange2A:#FF872A;
+
+//social icons original color
+$facebookColor: #3b5998;
+$twitterColor: #00acee;
+$youtubeColor: #c4302b;
+$behanceColor: #053eff;
+$linkedinColor: #0e76a8;
+$okColor: #ed812b;
+$pinterestColor: #c8232c;
+$vkColor: #4c75a3;
+$tiktokColor: #EE1D52;
+$telegramColor: #0088cc;
+$instagramColor: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+
+
+
+//sizes
+$container1920: 1690px;
+
+$container1600: 1440px;
+
+$container1440: 1300px;
+
+$container1280: 1160px;
+
+$colPadding1920: 15px;
+
+$colPadding1600: 12px;
+
+$colPadding1440: 10px;
+
+$colPadding960: 8px;
+
+$colPadding768: 5px;
+
+$colPadding360: 4px;
+
+$containerPadding: 20px;
+
+$containerMobPadding: 20px;

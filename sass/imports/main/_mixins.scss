@@ -1,0 +1,853 @@
+@use "sass:math";
+
+@function fn-truncate($value, $places) {
+	$radix: 10;
+	$num: 1;
+	$result : 0;
+
+	@for $i from 1 through $places {
+		$num: $num * $radix;
+	}
+
+	$result: math.div(math.floor($value * $num), $num);
+
+	@return $result;
+}
+
+@mixin standardList {
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+}
+
+@mixin standardRowList {
+	padding: 0;
+	margin-top: 0;
+	margin-bottom: 0;
+	list-style-type: none;
+	display: flex;
+	flex-wrap: wrap;
+	@include rowMargin;
+}
+
+@mixin customList($margin, $padding, $type) {
+	padding: $padding;
+	margin: $margin;
+	list-style-type: $type;
+}
+
+@mixin slider($count) {
+	position: relative;
+
+	&:not(.slick-slider) {
+		overflow: hidden;
+		display: flex;
+
+		>div {
+			flex: 0 0 fn-truncate(math.div(1, $count), 4) * 100%;
+			max-width: fn-truncate(math.div(1, $count), 4) * 100%;
+		}
+
+		@include mediaTo($size960) {
+			overflow: visible;
+		}
+	}
+}
+
+@mixin slide($width, $position) {
+	display: inline-block;
+	white-space: normal;
+	font-size: 1rem;
+	width: $width;
+	vertical-align: $position;
+}
+
+@mixin centerCover {
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+@mixin animStyle($parameters) {
+	-o-transition: $parameters;
+	-ms-transition: $parameters;
+	-moz-transition: $parameters;
+	-webkit-transition: $parameters;
+	transition: $parameters;
+}
+
+@mixin animStyles($param1, $param2) {
+	-o-transition: $param1, $param2;
+	-ms-transition: $param1, $param2;
+	-moz-transition: $param1, $param2;
+	-webkit-transition: $param1, $param2;
+	transition: $param1, $param2;
+}
+
+@mixin transStyle($parameters) {
+	transform: $parameters;
+	-moz-transform: $parameters;
+	-ms-transform: $parameters;
+	-webkit-transform: $parameters;
+	-o-transform: $parameters;
+}
+
+@mixin torigin($parameters) {
+	transform-origin: $parameters;
+	-webkit-transfrom-origin: $parameters;
+}
+
+@mixin animDelay($parameters) {
+	-o-transition-delay: $parameters;
+	-ms-transition-delay: $parameters;
+	-moz-transition-delay: $parameters;
+	-webkit-transition-delay: $parameters;
+	transition-delay: $parameters;
+}
+
+@mixin overHidden {
+	position: relative;
+	overflow: hidden;
+}
+
+@mixin psevdoAbs {
+	display: block;
+	content: "";
+	position: absolute;
+}
+
+@mixin coverLayer {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+
+@mixin fixCoverLayer {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+
+@mixin maskedInput {
+	position: absolute;
+	width: 0;
+	height: 0;
+	top: 0;
+	left: 0;
+	visibility: hidden;
+}
+
+@mixin colCount($col) {
+	-moz-column-count: $col;
+	-webkit-column-count: $col;
+	column-count: $col;
+}
+
+@mixin colGap($gap) {
+	-webkit-column-gap: $gap;
+	-moz-column-gap: $gap;
+	column-gap: $gap;
+}
+
+@mixin customScroll($size, $mozWidth, $trackRadius, $barRadius, $trackBg, $barBg) {
+	scrollbar-color: $barBg $trackBg;
+	scrollbar-width: $mozWidth;
+
+	&::-webkit-scrollbar {
+		width: $size;
+		height: $size;
+		border-radius: $trackRadius;
+		background: $trackBg;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		border-radius: $barRadius;
+		background: $barBg;
+	}
+}
+
+@mixin swiperSlide {
+	.swiper-slide {
+		padding: 0 15px;
+	}
+
+	.swiper-button-next,
+	.swiper-button-prev {
+		&:before {
+			font-size: 8.4rem;
+			position: absolute;
+			top: -15px;
+			color: $white;
+			font-family: $semiBold;
+
+			@include mediaTo($size576) {
+				font-size: 6.4rem;
+				top: -5px;
+			}
+		}
+
+		@include mediaTo($size768) {
+			font-size: 20px;
+		}
+	}
+
+	.swiper-button-next {
+		&:before {
+			margin-left: -40px;
+
+		}
+	}
+
+	.swiper-button-prev {
+		&:before {
+			margin-right: -40px;
+		}
+	}
+
+	.swiper-button-prev:after,
+	.swiper-button-next:after {
+		display: none;
+	}
+}
+
+@mixin textOverflow($rowCount, $position) {
+	position: $position;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: $rowCount;
+	-webkit-box-orient: vertical;
+}
+
+@mixin popupBlock($background, $opacity) {
+	position: fixed;
+	left: 0;
+	width: 100%;
+	height: 0;
+	overflow: hidden;
+	z-index: 1000;
+	background: rgba($background, $opacity);
+
+	&.showed {
+		height: 100%;
+		overflow-y: auto;
+	}
+}
+
+@mixin popupTop($transition) {
+	top: -100%;
+	@include animStyles(height 0s $transition, top $transition);
+
+	&.showed {
+		top: 0;
+		@include animStyles(height 0s 0s, top $transition);
+	}
+}
+
+@mixin popupBottom($transition) {
+	top: 100%;
+	@include animStyles(height 0s $transition, top $transition);
+
+	&.showed {
+		top: 0;
+		@include animStyles(height 0s 0s, top $transition);
+	}
+}
+
+@mixin popupFade($transition) {
+	top: 0;
+	opacity: 0;
+	@include animStyles(height 0s $transition, opacity $transition);
+
+	&.showed {
+		opacity: 1;
+		@include animStyles(height 0s 0s, opacity $transition);
+	}
+}
+
+@mixin popupInner($padding) {
+	display: flex;
+	width: 100%;
+	min-height: 100%;
+	justify-content: center;
+	align-items: center;
+	padding: $padding;
+}
+
+@mixin popupContainer($background, $maxWidth, $padding) {
+	background: $background;
+	width: 100%;
+	max-width: $maxWidth;
+	padding: $padding;
+	position: relative;
+}
+
+@mixin menuBtn($width, $height, $color, $padding, $lineSize, $lineWidth, $lineEdge, $lineLeft, $transition) {
+	border: none;
+	background: transparent;
+	color: $color;
+	padding: $padding;
+	width: $width;
+	height: $height;
+	position: relative;
+	overflow: hidden;
+	z-index: 100;
+
+	&:before,
+	&:after {
+		@include psevdoAbs;
+		@include animStyle(all $transition);
+		border-top: $lineSize solid;
+		left: $lineLeft;
+		width: $lineWidth;
+	}
+
+	&:before {
+		top: $lineEdge;
+	}
+
+	&:after {
+		bottom: $lineEdge;
+	}
+
+	span {
+		display: block;
+		border-top: $lineSize solid;
+		@include animStyle(opacity 0.2s);
+		@include animDelay($transition - 0.2);
+	}
+}
+
+@mixin menuClose($rotateSize) {
+	span {
+		opacity: 0;
+		@include animDelay(0s);
+	}
+
+	&:before {
+		@include transStyle(rotate($rotateSize));
+	}
+
+	&:after {
+		@include transStyle(rotate(-$rotateSize));
+	}
+}
+
+@mixin standardCol($col) {
+	flex: 0 0 fn-truncate(math.div($col, 12), 4) * 100%;
+	max-width: fn-truncate(math.div($col, 12), 4) * 100%;
+	@include gridPadding;
+}
+
+@mixin colSize($col) {
+	flex: 0 0 fn-truncate(math.div($col, 12), 4) * 100%;
+	max-width: fn-truncate(math.div($col, 12), 4) * 100%;
+}
+
+@mixin grid2($size1, $col1, $col2) {
+	@include mediaFrom($size1) {
+		flex: 0 0 fn-truncate(math.div(1, $col1), 4) * 100%;
+		max-width: fn-truncate(math.div(1, $col1), 4) * 100%;
+	}
+
+	@include mediaTo($size1) {
+		flex: 0 0 fn-truncate(math.div(1, $col2), 4) * 100%;
+		max-width: fn-truncate(math.div(1, $col2), 4) * 100%;
+	}
+}
+
+@mixin grid3($size1, $col1, $size2, $col2, $col3) {
+	@include mediaFrom($size1) {
+		flex: 0 0 fn-truncate(math.div(1, $col1), 4) * 100%;
+		max-width: fn-truncate(math.div(1, $col1), 4) * 100%;
+	}
+
+	@include mediaRange($size2, $size1) {
+		flex: 0 0 fn-truncate(math.div(1, $col2), 4) * 100%;
+		max-width: fn-truncate(math.div(1, $col2), 4) * 100%;
+	}
+
+	@include mediaTo($size2) {
+		flex: 0 0 fn-truncate(math.div(1, $col3), 4) * 100%;
+		max-width: fn-truncate(math.div(1, $col3), 4) * 100%;
+	}
+}
+
+@mixin grid4($size1, $col1, $size2, $col2, $size3, $col3, $col4) {
+	@include mediaFrom($size1) {
+		flex: 0 0 fn-truncate(math.div(1, $col1), 4) * 100%;
+		max-width: fn-truncate(math.div(1, $col1), 4) * 100%;
+	}
+
+	@include mediaRange($size2, $size1) {
+		flex: 0 0 fn-truncate(math.div(1, $col2), 4) * 100%;
+		max-width: fn-truncate(math.div(1, $col2), 4) * 100%;
+	}
+
+	@include mediaRange($size3, $size2) {
+		flex: 0 0 fn-truncate(math.div(1, $col3), 4) * 100%;
+		max-width: fn-truncate(math.div(1, $col3), 4) * 100%;
+	}
+
+	@include mediaTo($size3) {
+		flex: 0 0 fn-truncate(math.div(1, $col4), 4) * 100%;
+		max-width: fn-truncate(math.div(1, $col4), 4) * 100%;
+	}
+}
+
+@mixin grid5($size1, $col1, $size2, $col2, $size3, $col3, $size4, $col4, $col5) {
+	@include mediaFrom($size1) {
+		flex: 0 0 fn-truncate(math.div(1, $col1), 4) * 100%;
+		max-width: fn-truncate(math.div(1, $col1), 4) * 100%;
+	}
+
+	@include mediaRange($size2, $size1) {
+		flex: 0 0 fn-truncate(math.div(1, $col2), 4) * 100%;
+		max-width: fn-truncate(math.div(1, $col2), 4) * 100%;
+	}
+
+	@include mediaRange($size3, $size2) {
+		flex: 0 0 fn-truncate(math.div(1, $col3), 4) * 100%;
+		max-width: fn-truncate(math.div(1, $col3), 4) * 100%;
+	}
+
+	@include mediaRange($size4, $size3) {
+		flex: 0 0 fn-truncate(math.div(1, $col4), 4) * 100%;
+		max-width: fn-truncate(math.div(1, $col4), 4) * 100%;
+	}
+
+	@include mediaTo($size4) {
+		flex: 0 0 fn-truncate(math.div(1, $col5), 4) * 100%;
+		max-width: fn-truncate(math.div(1, $col5), 4) * 100%;
+	}
+}
+
+@mixin grid6($size1, $col1, $size2, $col2, $size3, $col3, $size4, $col4, $size5, $col5, $col6) {
+	@include mediaFrom($size1) {
+		flex: 0 0 fn-truncate(math.div(1, $col1), 4) * 100%;
+		max-width: fn-truncate(math.div(1, $col1), 4) * 100%;
+	}
+
+	@include mediaRange($size2, $size1) {
+		flex: 0 0 fn-truncate(math.div(1, $col2), 4) * 100%;
+		max-width: fn-truncate(math.div(1, $col2), 4) * 100%;
+	}
+
+	@include mediaRange($size3, $size2) {
+		flex: 0 0 fn-truncate(math.div(1, $col3), 4) * 100%;
+		max-width: fn-truncate(math.div(1, $col3), 4) * 100%;
+	}
+
+	@include mediaRange($size4, $size3) {
+		flex: 0 0 fn-truncate(math.div(1, $col4), 4) * 100%;
+		max-width: fn-truncate(math.div(1, $col4), 4) * 100%;
+	}
+
+	@include mediaRange($size5, $size4) {
+		flex: 0 0 fn-truncate(math.div(1, $col5), 4) * 100%;
+		max-width: fn-truncate(math.div(1, $col5), 4) * 100%;
+	}
+
+	@include mediaTo($size4) {
+		flex: 0 0 fn-truncate(math.div(1, $col6), 4) * 100%;
+		max-width: fn-truncate(math.div(1, $col6), 4) * 100%;
+	}
+}
+
+@mixin customCol($col, $maxWidth, $padding) {
+	flex: 0 0 fn-truncate(math.div($col, 12), 4) * 100%;
+	max-width: $maxWidth;
+	padding-left: $padding;
+	padding-right: $padding;
+}
+
+@mixin fontSize($size) {
+	font-size: fn-truncate(math.div($size, 13), 4) * 100%;
+}
+
+@mixin absFontSize($size) {
+	font-size: fn-truncate(math.div($size, 13), 2)+rem;
+}
+
+@mixin fontSizeHeight($size, $height) {
+	font-size: fn-truncate(math.div($size, 13), 4) * 100%;
+	line-height: fn-truncate(math.div($height, $size), 2)+em;
+}
+
+@mixin mobileMenu($position, $top, $background, $transition) {
+	position: $position;
+	overflow: hidden;
+	top: $top;
+	background: $background;
+	left: 0;
+	width: 100%;
+	height: 0;
+	@include animStyle(height $transition);
+}
+
+@mixin tabBlock($transition) {
+	position: relative;
+	@include animStyle(opacity $transition);
+
+	&:not(.selected) {
+		height: 0;
+		opacity: 0;
+		overflow: hidden;
+	}
+}
+
+@mixin videoIcon($background, $color) {
+	&:before {
+		@include psevdoAbs;
+		left: 50%;
+		top: 50%;
+		border-radius: 50%;
+		background: $background;
+		@include transStyle(translate3d(-50%, -50%, 0));
+	}
+
+	&:after {
+		@include psevdoAbs;
+		left: 50%;
+		top: 50%;
+		border-style: solid;
+		border-color: transparent $color;
+		@include transStyle(translate3d(-50%, -50%, 0));
+	}
+}
+
+@mixin videoIconSize($size, $innerWidth, $innerHeight) {
+	&:before {
+		width: $size;
+		height: $size;
+	}
+
+	&:after {
+		width: $innerWidth;
+		height: $innerHeight;
+		border-width: math.div($innerHeight, 2) 0 math.div($innerHeight, 2) $innerWidth;
+	}
+}
+
+@mixin selectStyle($color, $placeholder, $borderColor, $background, $radius, $fontSize, $lineHeight, $padding, $arrowSize, $arrowColor) {
+	.select2-container {
+		.select2-selection--single {
+			height: auto;
+		}
+
+		.select2-selection__placeholder {
+			color: $placeholder;
+		}
+
+		&--default {
+			.select2-selection--single {
+				background-color: $background;
+				border: 1px solid $borderColor;
+				border-radius: $radius;
+				display: flex;
+				align-items: center;
+				position: relative;
+				box-shadow: none;
+				outline: none;
+
+				.select2-selection__rendered {
+					color: $color;
+					font-size: $fontSize;
+					line-height: $lineHeight;
+					padding: $padding;
+					flex: 1;
+					width: 50%;
+				}
+
+				.select2-selection__arrow {
+					height: auto;
+					position: relative;
+					top: auto;
+					right: auto;
+					padding: $padding;
+					padding-left: 0;
+					width: auto;
+					color: $arrowColor;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+
+					* {
+						display: none;
+					}
+
+					&:before {
+						@extend %iconElement;
+						content: "\e901";
+						font-size: $arrowSize;
+						display: block;
+					}
+				}
+			}
+
+			&.select2-container--open {
+				.select2-selection__arrow {
+					@extend %horizontalRotate;
+				}
+
+				.select2-selection--single {
+					border-bottom-right-radius: 0;
+					border-bottom-left-radius: 0;
+					z-index: 10;
+				}
+			}
+		}
+
+		.select2-search--dropdown {
+			padding: 0;
+
+			.select2-search__field {
+				border: none;
+				border-bottom: 1px solid $borderColor;
+				padding: $padding;
+				font-size: 100%;
+				line-height: inherit;
+			}
+		}
+	}
+}
+
+@mixin selectDrop($border, $itemBorder, $fontSize, $lineHeight, $padding, $shadow, $scrollWidth, $scrollRadius, $scrollTrack, $scrollBar, $selectedBg, $selectedColor, $highlightBg, $highlightColor) {
+	.select2-container {
+		.select2-dropdown {
+			border: 1px solid $border;
+			font-size: $fontSize;
+			line-height: $lineHeight;
+			box-shadow: $shadow;
+			position: relative;
+			z-index: 5;
+		}
+
+		.select2-results__options {
+			overflow-x: hidden;
+			@include customScroll($scrollWidth, auto, thin, $scrollRadius, $scrollRadius, $scrollTrack, $scrollBar);
+
+			li {
+				@extend %all300;
+				padding: $padding;
+			}
+		}
+
+		.select2-results__option {
+			&:not(:last-child) {
+				border-bottom: 1px solid $itemBorder;
+			}
+
+			&--highlighted.select2-results__option--selectable {
+				background: $highlightBg;
+				color: $highlightColor;
+			}
+
+			&--selected {
+				background: $selectedBg !important;
+				color: $selectedColor !important;
+				cursor: default;
+			}
+		}
+	}
+}
+
+@mixin gradientColor($gradient) {
+	background-image: $gradient;
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+@mixin zIndex($index) {
+	position: relative;
+	z-index: $index;
+}
+
+@mixin containerPadding {
+	@include mediaFrom($size960) {
+		padding-left: $containerPadding;
+		padding-right: $containerPadding;
+	}
+
+	@include mediaTo($size960) {
+		padding-left: $containerMobPadding;
+		padding-right: $containerMobPadding;
+	}
+}
+
+@mixin gridPadding {
+	@include mediaFrom($size1600) {
+		padding-left: $colPadding1920;
+		padding-right: $colPadding1920;
+	}
+
+	@include mediaRange($size1440, $size1600) {
+		padding-left: $colPadding1600;
+		padding-right: $colPadding1600;
+	}
+
+	@include mediaRange($size960, $size1440) {
+		padding-left: $colPadding1440;
+		padding-right: $colPadding1440;
+	}
+
+	@include mediaRange($size768, $size960) {
+		padding-left: $colPadding960;
+		padding-right: $colPadding960;
+	}
+
+	@include mediaRange($size576, $size768) {
+		padding-left: $colPadding768;
+		padding-right: $colPadding768;
+	}
+
+	@include mediaTo($size576) {
+		padding-left: $colPadding360;
+		padding-right: $colPadding360;
+	}
+}
+
+@mixin gridMargin {
+	@include mediaFrom($size1600) {
+		margin-left: $colPadding1920;
+		margin-right: $colPadding1920;
+	}
+
+	@include mediaRange($size1440, $size1600) {
+		margin-left: $colPadding1600;
+		margin-right: $colPadding1600;
+	}
+
+	@include mediaRange($size960, $size1440) {
+		margin-left: $colPadding1440;
+		margin-right: $colPadding1440;
+	}
+
+	@include mediaRange($size768, $size960) {
+		margin-left: $colPadding960;
+		margin-right: $colPadding960;
+	}
+
+	@include mediaRange($size576, $size768) {
+		margin-left: $colPadding768;
+		margin-right: $colPadding768;
+	}
+
+	@include mediaTo($size576) {
+		margin-left: $colPadding360;
+		margin-right: $colPadding360;
+	}
+}
+
+@mixin rowMargin {
+	@include mediaFrom($size1600) {
+		margin-left: -$colPadding1920;
+		margin-right: -$colPadding1920;
+	}
+
+	@include mediaRange($size1440, $size1600) {
+		margin-left: -$colPadding1600;
+		margin-right: -$colPadding1600;
+	}
+
+	@include mediaRange($size960, $size1440) {
+		margin-left: -$colPadding1440;
+		margin-right: -$colPadding1440;
+	}
+
+	@include mediaRange($size768, $size960) {
+		margin-left: -$colPadding960;
+		margin-right: -$colPadding960;
+	}
+
+	@include mediaRange($size576, $size768) {
+		margin-left: -$colPadding768;
+		margin-right: -$colPadding768;
+	}
+
+	@include mediaTo($size576) {
+		margin-left: -$colPadding360;
+		margin-right: -$colPadding360;
+	}
+}
+
+@mixin loading() {
+	&.loading {
+		pointer-events: none;
+		-webkit-text-fill-color: transparent;
+		position: relative;
+
+		&:after {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin: -4px -12px;
+			border-radius: 50%;
+			color: inherit;
+			display: block;
+			width: 8px;
+			height: 8px;
+			content: "";
+			animation: loadAnimation 1.6s infinite linear;
+		}
+	}
+}
+
+@mixin mediaRange($from, $to) {
+	@media screen and (min-width: $from) and (max-width: $to - 1) {
+		@content
+	}
+}
+
+@mixin mediaFrom($from) {
+	@media screen and (min-width: $from) {
+		@content
+	}
+}
+
+@mixin mediaTo($to) {
+	@media screen and (max-width: $to - 1) {
+		@content
+	}
+}
+
+@mixin mediaVRange($from, $to) {
+	@media screen and (min-height: $from) and (max-height: $to - 1) {
+		@content
+	}
+}
+
+@mixin mediaVFrom($from) {
+	@media screen and (min-height: $from) {
+		@content
+	}
+}
+
+@mixin mediaVTo($to) {
+	@media screen and (max-height: $to - 1) {
+		@content
+	}
+}
+
+@mixin placeholder {
+	::-webkit-input-placeholder {
+		@content
+	}
+
+	:-moz-placeholder {
+		@content
+	}
+
+	::-moz-placeholder {
+		@content
+	}
+
+	:-ms-input-placeholder {
+		@content
+	}
+}
