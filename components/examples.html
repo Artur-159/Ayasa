@@ -1,0 +1,310 @@
+<!-- simple field block -->
+
+<div class="field_block">
+    <label>
+        <span class="hidden_label">field name</span>
+        <input type="text" name="name" placeholder="name" maxlength="50" data-validation="required"/>
+    </label>
+    <span class="error_hint">mandatory field</span>
+</div>
+
+<!-- simple field block with field name -->
+
+<div class="field_block">
+    <label>
+        <span class="field_name">field name</span>
+        <input type="text" name="name" placeholder="name" maxlength="50" data-validation="required"/>
+    </label>
+    <span class="error_hint">mandatory field</span>
+</div>
+
+<!-- simple field block without label, with aria label -->
+<div class="field_block">
+    <input type="text" name="name" placeholder="name" maxlength="50" data-validation="required" aria-label="field name"/>
+    <span class="error_hint">mandatory field</span>
+</div>
+
+<!-- numbers field block -->
+
+<div class="field_block">
+    <label>
+        <span class="hidden_label">field name</span>
+        <input type="text" name="number" placeholder="number" maxlength="50" oninput="this.value=this.value.replace(/[^0-9]/g,'');" data-validation="required"/>
+    </label>
+    <span class="error_hint">mandatory field</span>
+</div>
+
+<!-- email field block -->
+
+<div class="field_block">
+    <label>
+        <span class="hidden_label">field name</span>
+        <input type="text" name="email" placeholder="email" maxlength="50" data-validation="email"/>
+    </label>
+    <span class="error_hint">
+        <span class="standard_hint">mandatory field</span>
+        <span class="individual_hint">wrong email</span>
+    </span>
+</div>
+
+<!-- attach field  -->
+
+<div class="field_block">
+    <label class="attach_block">
+        <input type="file" name="file" data-maxsize="5" accept=".pdf,.doc,.docx" data-sizeerror="illegal size, no more than 5mb" data-typeerror="invalid format, pdf, doc or docx only" data-validation="required"/>
+        <span class="attach_btn">Add File</span>
+    </label>
+    <span class="error_hint">cv attachment is required</span>
+</div>
+
+<!-- checkbox field -->
+
+<div class="field_block">
+    <label class="check_block">
+        <input type="checkbox" name="checkbox[]"/>
+        <span class="check_btn">checkbox</span>
+    </label>
+</div>
+
+<!-- checkbox field with link-->
+
+<div class="field_block">
+    <label class="check_block">
+        <input type="checkbox" name="checkbox[]"/>
+        <span class="check_btn">checkbox</span>
+        <a href="policy.php" target="_blank">link</a>
+    </label>
+</div>
+
+<!-- radio field -->
+
+<div class="field_block">
+    <label class="radio_block">
+        <input type="radio" name="radio"/>
+        <span class="radio_btn"></span>
+    </label>
+    <label class="radio_block">
+        <input type="radio" name="radio"/>
+        <span class="radio_btn"></span>
+    </label>
+    <label class="radio_block">
+        <input type="radio" name="radio"/>
+        <span class="radio_btn"></span>
+    </label>
+</div>
+
+<!-- news block -->
+
+<div class="news_block">
+    <a href="news_inner.php" class="news_image">
+        <img src="images/news_image.jpg" alt="" title="" width="" height=""/>
+        news title
+    </a>
+    <div class="news_info">
+        <div class="news_title">
+            <a href="news_inner.php">news title</a>
+        </div>
+        <div class="news_description">news description</div>
+        <div class="news_date">15.01.2023</div>
+    </div>
+</div>
+
+<!-- news block full clickable -->
+
+<a href="news_inner" class="news_block">
+    <span class="news_image">
+        <img src="images/news_image.jpg" alt="" title="" width="" height=""/>
+    </span>
+    <span class="news_info">
+        <span class="news_title">news title</span>
+        <span class="news_description">news description</span>
+        <span class="news_date">15.01.2023</span>
+    </span>
+</a>
+
+<!-- faq -->
+
+<ul class="faq_list">
+    <li>
+        <button class="question_block">Question</button>
+        <div class="answer_block">Answer</div>
+    </li>
+    <li>
+        <button class="question_block">Question</button>
+        <div class="answer_block">Answer</div>
+    </li>
+    <li>
+        <button class="question_block">Question</button>
+        <div class="answer_block">Answer</div>
+    </li>
+</ul>
+
+<!-- developer info -->
+
+<div class="developer">Designed bu Developed by <a href="https://www.studio-one.am" target="_blank">Studio One</a></div>
+
+<!-- fullscreen image for all sizes -->
+
+<picture>
+    <source media="(min-width:1441px)" width="1920" height="1080" srcset="images/main_screen_web.webp 1x, images/main_screen_web@x2.webp 2x">
+    <source media="(min-width:1025px)" width="1440" height="810" srcset="images/main_screen_web.webp 1x, images/main_screen_web@x2.webp 2x">
+    <source media="(min-width:769px)" width="1024" height="576" srcset="images/main_screen_web.webp 1x, images/main_screen_web@x2.webp 2x">
+    <source media="(min-width:480px)" width="768" height="1024" srcset="images/main_screen_mob@x2.webp"> <!--size x2-->
+    <img class="full_height" src="images/main_screen_mob@x2.webp" width="360" height="640" alt="" title=""/> <!--size x2-->
+</picture>
+
+<!-- socials list -->
+
+<ul class="socials_list">
+    <li><a href="" class="icon_instagram" target="_blank">instagram</a></li>
+    <li><a href="" class="icon_telegram" target="_blank">telegram</a></li>
+    <li><a href="" class="icon_facebook" target="_blank">facebook</a></li>
+    <li><a href="" class="icon_youtube" target="_blank">youtube</a></li>
+    <li><a href="" class="icon_twitter" target="_blank">x</a></li>
+    <li><a href="" class="icon_linkedin" target="_blank">linkedin</a></li>
+</ul>
+
+<!-- notifications -->
+
+<div class="page_messages">
+
+    <div class="message_block success_message icon_success">
+        <span class="message_text">Success</span>
+        <span class="message_remove icon_close"><span>
+    </div>
+
+    <div class="message_block info_message icon_info">
+        <span class="message_text">Information</span>
+        <span class="message_remove icon_close"><span>
+    </div>
+
+    <div class="message_block warning_message icon_warning">
+        <span class="message_text">Warning!</span>
+        <span class="message_remove icon_close"><span>
+    </div>
+
+    <div class="message_block error_message icon_error">
+        <span class="message_text">Someting is wrong</span>
+        <span class="message_remove icon_close"><span>
+    </div>
+</div>
+
+<!-- callback popup -->
+<template class="callback_template">
+    <div class="popup_block callback_popup">
+        <div class="popup_inner">
+            <div class="popup_container">
+                <button class="popup_close icon_close" aria-label="popup close"></button>
+                <div class="popup_title">Success</div>
+                <div class="popup_description">Popup description</div>
+                <div class="popup_btns">
+                    <a href="index.php" class="primary_btn">Go To Homepage</a>
+                    <button class="secondary_btn popup_close" aria-label="popup close">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+<!-- standard search -->
+
+<div class="search_block">
+    <form class="search_form">
+        <label class="search_field">
+            <span class="hidden_label">Search</span>
+            <input type="text" name="search" maxlength="200" placeholder="Search"/>
+        </label>
+        <button class="search_btn icon_search" type="submit" aria-label="search"></button>
+    </form>
+</div>
+
+<!-- fullscreen slider -->
+
+<div class="main_slider">
+    <div class="swiper-wrapper">
+        <div class="swipe-slide">
+            <div class="slide_image">
+                <picture>
+                    <source media="(min-width:1441px)" width="1920" height="1080" srcset="images/main_screen_web.webp 1x, images/main_screen_web@x2.webp 2x">
+                    <source media="(min-width:1025px)" width="1440" height="810" srcset="images/main_screen_web.webp 1x, images/main_screen_web@x2.webp 2x">
+                    <source media="(min-width:769px)" width="1024" height="576" srcset="images/main_screen_web.webp 1x, images/main_screen_web@x2.webp 2x">
+                    <source media="(min-width:480px)" width="768" height="1024" srcset="images/main_screen_mob@x2.webp"> <!--size x2-->
+                    <img class="full_height" src="images/main_screen_mob@x2.webp" width="360" height="640" alt="" title=""/> <!--size x2-->
+                </picture>
+            </div>
+            <div class="slide_info">
+                <div class="page_container">
+                    <div class="slide_title">Slide Title</div>
+                    <div class="slide_description">Slide description</div>
+                    <a href="" class="primary_btn">See More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- container slider -->
+
+<div class="main_slider">
+    <div class="swiper-wrapper">
+        <div class="swipe-slide">
+            <div class="slide_image">
+                <picture>
+                    <source media="(min-width:1441px)" width="1920" height="1080" srcset="images/main_screen_web.webp 1x, images/main_screen_web@x2.webp 2x">
+                    <source media="(min-width:1025px)" width="1440" height="810" srcset="images/main_screen_web.webp 1x, images/main_screen_web@x2.webp 2x">
+                    <source media="(min-width:769px)" width="1024" height="576" srcset="images/main_screen_web.webp 1x, images/main_screen_web@x2.webp 2x">
+                    <source media="(min-width:480px)" width="768" height="1024" srcset="images/main_screen_mob@x2.webp"> <!--size x2-->
+                    <img class="full_height" src="images/main_screen_mob@x2.webp" width="360" height="640" alt="" title=""/> <!--size x2-->
+                </picture>
+            </div>
+            <div class="slide_info">
+                <div class="slide_title">Slide Title</div>
+                <div class="slide_description">Slide description</div>
+                <a href="" class="primary_btn">See More</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- paging -->
+
+<div class="paging">
+    <ul>
+        <li><a href="" class="prev_page icon_left inactive">Prev</a></li>
+        <li><a href="" class="current_page">1</a></li>
+        <li><a href="">2</a></li>
+        <li><a href="">3</a></li>
+        <li>...</li>
+        <li><a href="">10</a></li>
+        <li><a href="" class="next_page icon_right">Next</a></li>
+    </ul>
+</div>
+
+<!-- breadcrumbs -->
+
+<div class="breadcrumbs">
+    <div class="page_container">
+        <ul>
+            <li><a href="index.php">գլխավոր էջ</a></li>
+            <li><a href="">Հաշվետվություններ</a></li>
+            <li><div>Գլխամաս գրասենյակ</div></li>
+        </ul>
+    </div>
+</div>
+
+<!-- youtube video block with mask and later load -->
+
+<div class="video_block">
+    <div class="player_block" id="video_block" data-video="XX5RbUYgIYg"></div>
+    <button class="video_btn" aria-label="video">
+        <img 
+            src="images/x1/video.jpg" 
+            srcset="images/x1/video.jpg 1x, 
+            images/x2/video.jpg 2x" 
+            alt="" 
+            title=""  
+            width="" 
+            height=""
+        />
+        <span class="video_title">video title</span>
+    </button>
+</div>

@@ -1,0 +1,57 @@
+@media screen and (min-width: 1441px) and (max-width: 1600px) {
+  .main_section .inner_section {
+    padding: 170px 0 250px;
+  }
+  .blocks_section .bottom_item {
+    margin-top: 70px;
+  }
+  .service_section .service_list li {
+    margin-bottom: 24px;
+  }
+}
+@media screen and (min-width: 1201px) and (max-width: 1600px) {
+  .goal_section .position_main .position_section:not(:first-child) .info_management:after {
+    margin-left: -63px;
+  }
+}
+@media screen and (min-width: 1025px) and (max-width: 1600px) {
+  .goal_section .date_inner {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .info_block {
+    flex: 0 0 58.33%;
+    max-width: 58.33%;
+  }
+  .img_block {
+    flex: 0 0 41.66%;
+    max-width: 41.66%;
+  }
+}
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+  .main_section .inner_section {
+    padding: 150px 0 245px;
+  }
+  .blocks_section .bottom_item {
+    margin-top: 60px;
+  }
+  .service_section .service_list li {
+    margin-bottom: 20px;
+  }
+}
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
+  .info_section .section_title {
+    font-size: 180%;
+  }
+  .blocks_section .description_block {
+    font-size: 140%;
+  }
+  .blocks_section .inner_block {
+    min-height: 420px;
+  }
+  .goal_section .position_main .position_section:not(:first-child) .info_management:after {
+    margin-left: -78px;
+  }
+}
+
+/*# sourceMappingURL=index-l.css.map */
